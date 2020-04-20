@@ -25,7 +25,7 @@ def quickDownload():
     try:
         req_data = request.get_json()
         url = req_data.get('url')
-        download_path = req_data.get('download_path')
+        download_path = req_data.get('download_path', '/downloads/')
     except:
         return jsonify(success=False)
 
@@ -52,7 +52,7 @@ def download():
     try:
         req_data = request.get_json()
         url = req_data.get('url')
-        download_path = req_data.get('download_path')
+        download_path = req_data.get('download_path', '/downloads/')
         start_time = req_data.get('start_time')
         end_time = req_data.get('end_time')
         only_audio = req_data.get('only_audio')
