@@ -3,4 +3,4 @@ Download videos from YouTube and many more sites just by sending an API request 
 
 # Usage
 
-`docker run -dt --network <some-docker-network> --name youtube-downloader -v $PWD:/downloads -e FLASK_PORT=9001 christus02/youtube-downloader-api`
+`docker run -dt --network <some-docker-network> --name youtube-downloader -v $PWD:/downloads -e FLASK_PORT=9001 raghulc/youtube-downloader-api`
