@@ -1,0 +1,30 @@
+name: yt-dl-api-test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    - name: Docker build
+      run: docker build -t youtube-downloader-api:latest .
+      
+    - name: Docker run
+      run: docker run -dt --name youtube-downloader -v $PWD:/downloads -e FLASK_PORT=9001 youtube-downloader-api:latest
+
+    - name: Test if the container is UP
+      run: |
+        echo "Testing if the Container is UP"
+        curl http://$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' youtube-downloader)):9001/server/status
