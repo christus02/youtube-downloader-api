@@ -6,7 +6,7 @@ import urllib
 import os
 
 app = Flask(__name__)
-FLASK_PORT = int(os.environ.get('FLASK_PORT'))
+FLASK_PORT = int(os.environ.get('FLASK_PORT', 8080))
 
 # Globals
 BASE_PATH = '/downloads';
