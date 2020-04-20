@@ -23,3 +23,6 @@ jobs:
       
     - name: Docker run
       run: docker run -dt --name youtube-downloader -v $PWD:/downloads -e FLASK_PORT=9001 youtube-downloader-api:latest
+  
+    - name: Docker log
+      run: docker logs youtube-downloader
