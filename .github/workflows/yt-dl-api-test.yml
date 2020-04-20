@@ -27,4 +27,4 @@ jobs:
     - name: Test if the container is UP
       run: |
         echo "Testing if the Container is UP"
-        curl http://$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' youtube-downloader)):9001/server/status
+        curl http://$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' youtube-downloader):9001/server/status
