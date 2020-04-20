@@ -22,9 +22,9 @@ jobs:
       run: docker build -t youtube-downloader-api:latest .
       
     - name: Docker run
-      run: docker run -dt --name youtube-downloader -v $PWD:/downloads -e FLASK_PORT=9001 youtube-downloader-api:latest
+      run: docker run -dt --name youtube-downloader -v $PWD:/downloads -e FLASK_PORT=9001 -p 8080:9001 youtube-downloader-api:latest
 
     - name: Test if the container is UP
       run: |
         echo "Testing if the Container is UP"
-        curl http://$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' youtube-downloader):9001/server/status
+        curl http://localhost:8080/server/status
