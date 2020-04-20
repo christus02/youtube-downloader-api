@@ -31,5 +31,9 @@ jobs:
     - uses: actions/checkout@v2
 
     # Runs a single command using the runners shell
-    - name: Execute Curl
-      run: curl -v http://localhost:${{ job.services.yt-dl-api.ports[9001] }}/server/status
+    #- name: Execute Curl
+    #  run: curl -v http://localhost:${{ job.services.yt-dl-api.ports[9001] }}/server/status
+    - name: curl
+      uses: wei/curl@v1
+      with:
+        args: http://localhost:${{ job.services.yt-dl-api.ports[9001] }}/server/status
