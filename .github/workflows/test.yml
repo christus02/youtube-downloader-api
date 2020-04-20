@@ -36,4 +36,4 @@ jobs:
     - name: curl
       uses: wei/curl@v1
       with:
-        args: http://localhost:${{ job.services.yt-dl-api.ports[9001] }}/server/status
+        args: http://yt-dl-api:${{ job.services.yt-dl-api.ports[9001] }}/server/status
