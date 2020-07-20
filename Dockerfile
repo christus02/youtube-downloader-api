@@ -7,6 +7,7 @@ RUN set -xe \
                           openssl \
                           python3 \
                           aria2 \
+                          py3-pip \
     && pip3 install youtube-dl flask
 
 RUN mkdir /downloads
